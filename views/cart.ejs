@@ -1,0 +1,43 @@
+<%- include('./partials/header.ejs') %> 
+
+
+<%if(Object.keys(cart).length === 0){ %>
+    <h2>Your Cart is Empty. Shop now for all your medical needs.</h2>
+<%}else{%>
+
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Product Name</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Price</th>
+            <th scope="col">Total</th>
+          </tr>
+        </thead>
+        <% var total=0; %>
+        <tbody>
+            <% cart.forEach(item=>{ %>
+                <tr>
+                    <th scope="row"><%= item.name %></th>
+                    <td><%= item.freq %></td>
+                    <td><%= item.price %></td>
+                    <td><%= item.price*item.freq %></td>
+                    <%total += item.price*item.freq %>
+                </tr>
+            <% }) %> 
+            <tr>
+                <td colspan="3"> Total:</td>
+                <td><%= total %></td>
+            </tr>
+        </tbody>
+    
+    </table>
+</div>
+
+<form method="POST" action="/Checkout">
+    <input type="submit" name="cartItem" class="btn btn-sm btn-primary" value="Checkout">
+</form>
+<%}%>
+    
+<%- include('./partials/footer.ejs') %> 

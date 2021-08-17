@@ -1,0 +1,36 @@
+<%- include('./partials/header.ejs') %> 
+
+    <form action="/admin/" method="POST">
+        <label class="my-4">
+            Name
+            <input type="text" name="product[name]">
+        </label>
+        <br>
+        <label class="my-4">
+            manufacturer
+            <input type="text" name="product[manufacturer]">
+        </label>
+        <br>
+        <label class="my-4">
+            price
+            <input type="text" name="product[price]">
+        </label>
+        <br>
+        <label class="my-4">
+            inStock
+            <input type="checkbox" name="product[inStock]">
+        </label>
+        <br>
+        <label class="my-4">
+            image URL
+            <input type="text" name="product[image]">
+        </label>
+        <br>
+        <label class="my-4">
+            tags
+            <input type="text" name="product[tags]">
+        </label>
+
+        <input type="submit">
+    </form>
+    <%- include('./partials/footer.ejs') %> 

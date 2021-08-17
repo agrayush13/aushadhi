@@ -1,0 +1,38 @@
+<%- include('./partials/header.ejs') %> 
+
+    
+    <div class="container"> 
+        <div class="jumbotron my-3">
+            <h1>
+                Aushadhi!!
+            </h1>
+        </div>
+        <div class="row">
+            <% products.forEach((product)=>{ %>
+                <div class="col-md-3 col-sm-6">
+
+                    <div class="img-thumbnail my-2 text-center">
+                        <img class="img-fluid" src="<%= product.image %> " > 
+                        <div class="caption">
+                            <h4> <%= product.name %> </h4>
+                        </div>
+                        <p>Manufacturer: <%= product.manufacturer %> </p>
+                        <p class="card-text"> <% product.tags.forEach((tag) => { %>
+                          node   <%= tag %> 
+                       <% }); %>  </p>
+                       <strong>Price: ₹ <%= product.price %>  </strong><br>
+
+                        <form method="POST" action="/addToCart">
+                            <input type="hidden" value="<%= product.id %>" name="itemId">
+                            <input type="submit" name="cartItem" class="btn btn-sm btn-primary" value="add to cart">
+                        </form>
+
+                    </div>
+                </div>
+            <% }); %> 
+    </div>
+
+    </div>
+
+    
+    <%- include('./partials/footer.ejs') %> 
